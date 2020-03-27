@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<generator>
+  <width>100</width>
+  <height>100</height>
+  <worldClass>World</worldClass>
+  <builders>
+    <builder name="Dungeon substrate" module="terrain.builders.main" class="FillTagBuilder">
+        <attributeName>tag</attributeName>
+        <attributeValue>ROCK</attributeValue>
+        <worldWidth editable="True">100</worldWidth>
+        <worldHeight editable="True">100</worldHeight>
+    </builder>
+    <builder name="Create rooms" module="terrain.builders.main" class="RandomRoomPlacer">
+        <numberOfRooms editable="True" description="Number of rooms to create">5</numberOfRooms>
+        <wallWidth>1</wallWidth>
+        <maxRoomTries>20</maxRoomTries>
+        <rooms>
+            <room minRowMultiplier="5" maxRowMultiplier="10" minColMultiplier="5" maxColMultiplier="10">
+                <row repeat="0">WwW</row>
+                <row repeat="1">WfW</row>
+                <row repeat="0">WwW</row>
+            </room>
+            <room minRowMultiplier="5" maxRowMultiplier="10" minColMultiplier="5" maxColMultiplier="10">
+                <row repeat="0"> www </row>
+                <row repeat="1">WfffW</row>
+                <row repeat="1">WfffW</row>
+                <row repeat="0"> www </row>
+            </room>
+            <room minRowMultiplier="5" maxRowMultiplier="10" minColMultiplier="5" maxColMultiplier="10">
+                <row repeat="0"> WwW </row>
+                <row repeat="1"> WfW </row>
+                <row repeat="1">WFfFW</row>
+                <row repeat="1">WFfFW</row>
+                <row repeat="1"> WfW </row>
+                <row repeat="0"> WwW </row>
+            </room>
+            <room minRowMultiplier="3" maxRowMultiplier="6" minColMultiplier="3" maxColMultiplier="6">
+                <row repeat="0">WwWwwwW</row>
+                <row repeat="1">WfFfffW</row>
+                <row repeat="0">WfWwwwW</row>
+                <row repeat="1">WfWsssS</row>
+                <row repeat="1">WfWsssS</row>
+                <row repeat="0">WwWsssS</row>
+            </room>
+        </rooms>
+    </builder>
+    <builder name="Create tunnels" module="terrain.builders.main" class="TunnelBuilder">
+        <tunnelOptimiserIterations editable="True" description="How long to look for optimal tunnel solution">100</tunnelOptimiserIterations>
+    </builder>
+  </builders>
+  <renderers>
+    <renderer name="main" module="terrain.renderers.main" class="TagNameRenderer">
+        <cellWidth>2</cellWidth>
+        <cellHeight>2</cellHeight>
+        <tagName>tag</tagName>
+        <defaultValue>ROCK</defaultValue>
+        <attributeValues>
+            <attributeValue tag="ROCK" colour="(10, 10, 10)"/>
+            <attributeValue tag="WALL" colour="(255, 255, 255)"/>
+            <attributeValue tag="FLOOR" colour="(100, 100, 255)"/>
+            <attributeValue tag="TUNNEL" colour="(255, 100, 100)"/>
+            <attributeValue tag="DOOR" colour="(100, 255, 100)"/>
+        </attributeValues>
+    </renderer>
+    <renderer name="tiled-dungeon" module="terrain.renderers.main" class="TiledRenderer"
+            confirmationMessage="Tiled file written">
+        <cellWidth>10</cellWidth>
+        <cellHeight>10</cellHeight>
+        <tilesetFilename>dungeon.png</tilesetFilename>
+        <tagName>tag</tagName>
+        <defaultValue>ROCK</defaultValue>
+        <attributeValues>
+            <attributeValue tag="ROCK" colour="(10, 10, 10)"/>
+            <attributeValue tag="WALL" colour="(255, 255, 255)"/>
+            <attributeValue tag="FLOOR" colour="(100, 100, 255)"/>
+            <attributeValue tag="TUNNEL" colour="(255, 100, 100)"/>
+            <attributeValue tag="DOOR" colour="(100, 255, 100)"/>
+        </attributeValues>
+    </renderer>
+  </renderers>
+</generator>

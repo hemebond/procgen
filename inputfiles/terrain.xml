@@ -1,0 +1,84 @@
+<generator>
+
+    <!-- Overall size of the terrain -->
+    <width editable="False">100</width>
+    <height editable="False">100</height>
+    <worldClass>World</worldClass>
+
+    <!-- The various builders that will be applied -->
+    <builders>
+        <builder name="Global substrate" module="terrain.builders.main" class="FillTagBuilder">
+            <attributeName>tag</attributeName>
+            <attributeValue>ROCK</attributeValue>
+            <worldWidth editable="True">100</worldWidth>
+            <worldHeight editable="True">100</worldHeight>
+        </builder>
+        <builder name="Rock substrate" module="terrain.builders.main" class="RockSubstrate">
+            <meanHeight editable="True" description="Average initial height of landscape">50</meanHeight>
+            <pushEnergy editable="True" description="Height of each attempted deviation">10</pushEnergy>
+            <dropOff editable="True" description="Width of each deviation">20</dropOff>
+            <numberPushes editable="True" description="Number of deviations">200</numberPushes>
+            <pushPullProbability editable="True" description="Balance of push and pulls">0.55</pushPullProbability>
+        </builder>
+        <builder name="Biome Tagger" module="terrain.builders.main" class="BiomeTagger">
+            <heightRanges>
+                <range tag="Deep Sea" low="-100" high="20"/>
+                <range tag="Sea" low="20" high="40"/>
+                <range tag="Shallows" low="40" high="45"/>
+                <range tag="Beach" low="45" high="50"/>
+                <range tag="Grass" low="50" high="60"/>
+                <range tag="Hills" low="60" high="70"/>
+                <range tag="Mountain" low="70" high="200"/>
+            </heightRanges>
+        </builder>
+    </builders>
+
+    <!-- Ways to render -->
+    <renderers>
+        <renderer name="main" module="terrain.renderers.main" class="HeightRenderer">
+            <cellWidth>2</cellWidth>
+            <cellHeight>2</cellHeight>
+            <baseHeight>50</baseHeight>
+            <!--
+            <maxHeight>100</maxHeight>
+            <minHeight>0</minHeight>
+            -->
+            <autoScale>1</autoScale>
+            <lowerColour>(0, 0, 255)</lowerColour>
+            <higherColour>(0, 255, 0</higherColour>
+        </renderer>
+        <renderer name="biome" module="terrain.renderers.main" class="TagNameRenderer">
+            <cellWidth>2</cellWidth>
+            <cellHeight>2</cellHeight>
+            <tagName>biome</tagName>
+            <defaultValue>ROCK</defaultValue>
+            <attributeValues>
+                <attributeValue tag="Deep Sea" colour="(0, 0, 255)" />
+                <attributeValue tag="Sea" colour="(100, 100, 255)" />
+                <attributeValue tag="Shallows" colour="(200, 200, 255)" />
+                <attributeValue tag="Beach" colour="(255, 255, 0)" />
+                <attributeValue tag="Grass" colour="(0, 255, 0)" />
+                <attributeValue tag="Hills" colour="(100, 255, 100)" />
+                <attributeValue tag="Mountain" colour="(200, 200, 200)" />
+            </attributeValues>
+        </renderer>
+        <renderer name="tiled-biome" module="terrain.renderers.main" class="TiledRenderer"
+                confirmationMessage="Tiled file written">
+            <cellWidth>10</cellWidth>
+            <cellHeight>10</cellHeight>
+            <tilesetFilename>tiles.png</tilesetFilename>
+            <tagName>biome</tagName>
+            <defaultValue>ROCK</defaultValue>
+            <attributeValues>
+                <attributeValue tag="Deep Sea" colour="(0, 0, 255)" />
+                <attributeValue tag="Sea" colour="(100, 100, 255)" />
+                <attributeValue tag="Shallows" colour="(200, 200, 255)" />
+                <attributeValue tag="Beach" colour="(255, 255, 0)" />
+                <attributeValue tag="Grass" colour="(0, 255, 0)" />
+                <attributeValue tag="Hills" colour="(100, 255, 100)" />
+                <attributeValue tag="Mountain" colour="(200, 200, 200)" />
+            </attributeValues>
+        </renderer>
+    </renderers>
+
+</generator>

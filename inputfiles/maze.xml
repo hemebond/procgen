@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<generator>
+  <width>21</width>
+  <height>21</height>
+  <worldClass>World</worldClass>
+  <builders>
+    <builder name="Dungeon substrate" module="terrain.builders.main" class="FillTagBuilder">
+        <attributeName>tag</attributeName>
+        <attributeValue>ROCK</attributeValue>
+        <worldWidth editable="True">51</worldWidth>
+        <worldHeight editable="True">51</worldHeight>
+    </builder>
+    <builder name="Maze builder" module="terrain.builders.maze" class="MazeBuilder">
+        <attributeName>tag</attributeName>
+        <wallValue>ROCK</wallValue>
+        <floorValue>FLOOR</floorValue>
+        <doorValue>DOOR</doorValue>
+        <numberEntrances editable="True" description="Number of entrances to the maze">2</numberEntrances>
+    </builder>
+  </builders>
+  <renderers>
+    <renderer name="main" module="terrain.renderers.main" class="TagNameRenderer">
+        <cellWidth>10</cellWidth>
+        <cellHeight>10</cellHeight>
+        <tagName>tag</tagName>
+        <defaultValue>ROCK</defaultValue>
+        <attributeValues>
+            <attributeValue tag="ROCK" colour="(255, 255, 255)"/>
+            <attributeValue tag="WALL" colour="(255, 255, 255)"/>
+            <attributeValue tag="FLOOR" colour="(10, 10, 20)"/>
+            <attributeValue tag="TUNNEL" colour="(255, 100, 100)"/>
+            <attributeValue tag="DOOR" colour="(10, 10, 20)"/>
+        </attributeValues>
+    </renderer>
+    <renderer name="tiled-dungeon" module="terrain.renderers.main" class="TiledRenderer"
+            confirmationMessage="Tiled file written">
+        <cellWidth>10</cellWidth>
+        <cellHeight>10</cellHeight>
+        <tilesetFilename>dungeon.png</tilesetFilename>
+        <tagName>tag</tagName>
+        <defaultValue>ROCK</defaultValue>
+        <attributeValues>
+            <attributeValue tag="ROCK" colour="(10, 10, 10)"/>
+            <attributeValue tag="WALL" colour="(255, 255, 255)"/>
+            <attributeValue tag="FLOOR" colour="(100, 100, 255)"/>
+            <attributeValue tag="TUNNEL" colour="(255, 100, 100)"/>
+            <attributeValue tag="DOOR" colour="(100, 255, 100)"/>
+        </attributeValues>
+    </renderer>
+  </renderers>
+</generator>

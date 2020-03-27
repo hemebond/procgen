@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+
+<generator>
+  <width editable="False" page="Main">200</width>
+  <height editable="False" page="Main">200</height>
+  <worldClass>StringWorld</worldClass>
+  <builders>
+    <builder name="Evolution placer" module="terrain.builders.roomevolution" class="EvolutionBased">
+        <initialPoolSize editable="True" description="Total number of sample solutions" page="Main">16</initialPoolSize>
+        <tournamentSize editable="True" description="Size of groups in tournament" page="Main">8</tournamentSize>
+        <maxIterations editable="True" description="Number of iterations of each tournament" page="Main">20</maxIterations>
+
+        <targetRooms editable="True" description="Number of rooms to create" page="Goals">15</targetRooms>
+        <missedCorridorPenalty editable="False">2</missedCorridorPenalty>
+        <corridorToRoomPenalty editable="False">0.5</corridorToRoomPenalty>
+        <exitLongestPath editable="True" description="Higher number favours exit being on longest path" page="Goals">1.5</exitLongestPath>
+        <missedDoorPenalty editable="False">0.2</missedDoorPenalty>
+        <numEventRooms editable="True" description="Target number of event rooms" page="Goals">2</numEventRooms>
+        <numTreasureRooms editable="True" description="Target number of treasure rooms" page="Goals">1</numTreasureRooms>
+        <numCorridors editable="True" description="Target number of corridors" page="Goals">4</numCorridors>
+
+        <rooms>
+            <room name="start" type="start">
+                WWWWWWW
+                W.....W
+                W..S..W
+                W.....W
+                W.....W
+                W.....W
+                WWWDWWW
+            </room>
+            <room name="square" type="room">
+                WWWDWWW
+                W.....W
+                W.....W
+                D.....D
+                W.....W
+                W.....W
+                WWWDWWW
+            </room>
+            <room name="diamond" type="room">
+                --WDW--
+                -W...W-
+                W.....W
+                W.....W
+                W.....W
+                -W...W-
+                --WDW--
+            </room>
+            <room name="trove" type="treasure">
+                --WDW--
+                -W...W-
+                WW...WW
+                W..C..W
+                WW...WW
+                -W...W-
+                --WDW--
+            </room>
+            <room name="short-corridor" type="corridor">
+                WWWW
+                D..D
+                WWWW
+            </room>
+            <room name="exit" type="exit">
+                WWWWW
+                W...W
+                W.X.D
+                W...W
+                WWWWW
+            </room>
+            <room name="long-corridor" type="corridor">
+                WWWWWWWWW
+                D.......D
+                WWWWWWWWW
+            </room>
+            <room name="left-small-l" type="corridor">
+                WWWWWWWWW
+                W.......W
+                D.......W
+                W.......W
+                WWWWW...W
+                ----W...W
+                ----W...W
+                ----W...W
+                ----WWDWW
+            </room>
+            <room name="right-small-l" type="corridor">
+                WWWWWWWWW
+                W.......W
+                W.......D
+                W.......W
+                W...WWWWW
+                W...W----
+                W...W----
+                W...W----
+                WWDWW----
+            </room>
+            <room name="boss-room" type="event">
+                WWWWWWDWWWWWW
+                W...........W
+                W...........W
+                W...........W
+                W....WWW....W
+                W....W-W....W
+                W....WWW....W
+                W...........W
+                W...........W
+                W...........W
+                WWWWWWWWWWWWW
+            </room>
+            <room name="narrows" type="room">
+                WWWWDWWWW
+                W.......W
+                W.......W
+                WWW...WWW
+                --W...W--
+                --W...W--
+                WWW...WWW
+                W.......W
+                D.......D
+                W.......W
+                WWWWWWWWW
+            </room>
+        </rooms>
+    </builder>
+  </builders>
+  <renderers>
+    <renderer name="main" module="terrain.renderers.main" class="StringRenderer">
+        <cellWidth>10</cellWidth>
+        <cellHeight>10</cellHeight>
+        <defaultValue>-</defaultValue>
+        <attributeValues>
+            <attributeValue tag="-" colour="(10, 10, 10)"/>
+            <attributeValue tag="W" colour="(255, 255, 255)"/>
+            <attributeValue tag="F" colour="(100, 100, 255)"/>
+            <attributeValue tag="T" colour="(255, 100, 100)"/>
+            <attributeValue tag="C" colour="(255, 255, 100)"/>
+            <attributeValue tag="D" colour="(100, 255, 100)"/>
+            <attributeValue tag="S" colour="(255, 100, 100)"/>
+            <attributeValue tag="X" colour="(0, 255, 255)"/>
+        </attributeValues>
+    </renderer>
+    <renderer name="tiled-evolution" module="terrain.renderers.main" class="TiledRenderer"
+            confirmationMessage="Tiled file written">
+        <cellWidth>10</cellWidth>
+        <cellHeight>10</cellHeight>
+        <tilesetFilename>evolution.png</tilesetFilename>
+        <tagName>None</tagName>
+        <defaultValue>-</defaultValue>
+        <attributeValues>
+            <attributeValue tag="-" colour="(10, 10, 10)"/>
+            <attributeValue tag="W" colour="(255, 255, 255)"/>
+            <attributeValue tag="F" colour="(100, 100, 255)"/>
+            <attributeValue tag="T" colour="(255, 100, 100)"/>
+            <attributeValue tag="C" colour="(255, 255, 100)"/>
+            <attributeValue tag="D" colour="(100, 255, 100)"/>
+            <attributeValue tag="S" colour="(255, 100, 100)"/>
+            <attributeValue tag="X" colour="(0, 255, 255)"/>
+        </attributeValues>
+    </renderer>
+  </renderers>
+</generator>

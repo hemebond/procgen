@@ -1,0 +1,50 @@
+Metadata-Version: 1.1
+Name: procgen
+Version: 0.2
+Summary: Procedural content generation system
+Home-page: URL
+Author: Paul Paterson
+Author-email: ppaterson@gmail.com
+License: UNKNOWN
+Download-URL: http://perpetualpyramid.com/procgen-0.2.tar.gz
+Description: ProcGen
+        -------
+        
+        A procedural content generation system and user interface. The "terrain" module is a modular
+        system for generating procedural content such as,
+        
+        - landscapes
+        - rogue-like dungeons
+        - doom-like dungeons
+        - caves
+        - mazes
+        
+        The system is configured with an XML file that defines what procedural modules are used
+        and what their initial parameters are.
+        
+        The user interface allows you to play around with the parameters and see what the impact
+        is of them.
+        
+        The generation system can be used live in games (using the terrain module and the XML files)
+        or you can export the created content to TILED xml files and load them into your
+        game in that way.
+        
+        
+        Requires: Python 2.6+, pygame 1.9+
+        
+        To run the game:
+        
+            python procgen.py
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Other Environment
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Games/Entertainment
+Classifier: Topic :: Games/Entertainment :: Puzzle Games
